@@ -1,5 +1,7 @@
 #Demonstrating Software Quality
 
+Application development process is available on Trello following this [link](https://trello.com/b/K7Bs3TGA/sqa-exam).
+
 ## RUN THE APP
 
 ### IntelliJ
