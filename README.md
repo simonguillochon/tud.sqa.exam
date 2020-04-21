@@ -70,9 +70,11 @@ Submit a link to your Github repository through Brightspace``
 ***
 
 ## PULL REQUEST TEMPLATE
->TODO
+
+Pull Request template can be found in the file [PRTEMPLATE.md](./PRTEMPLATE.md).
 
 ## CODE REVIEW CHECKLIST
->TODO
+Code review checklist can be found in the file [CRCHECKLIST.md](./CRCHECKLIST.md).
+
 
 ***
