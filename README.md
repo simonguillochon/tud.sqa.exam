@@ -70,11 +70,28 @@ Submit a link to your Github repository through Brightspace``
 ***
 
 ## PULL REQUEST TEMPLATE
-
 Pull Request template can be found in the file [PRTEMPLATE.md](./PRTEMPLATE.md).
+
+***
 
 ## CODE REVIEW CHECKLIST
 Code review checklist can be found in the file [CRCHECKLIST.md](./CRCHECKLIST.md).
 
+***
+
+## GIT MESSAGE
+Open your local git configuration `~/.gitconfig` and add the following :
+```git
+[commit]
+  template = ~/.gitmessage
+``` 
+Copy the .gitmessage file of the project on your local device :
+```shell script
+cp ./.gitmessage ~/.gitmessage
+```
+Now you just have to enter the following when you want to commit your changes :
+```shell script
+git commit
+```
 
 ***
