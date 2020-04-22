@@ -1,6 +1,7 @@
 package tud.sqa.exam.Survey;
 
 import org.springframework.web.bind.annotation.*;
+import tud.sqa.exam.SurveyResponse.SurveyResponse;
 
 import java.util.List;
 
@@ -51,5 +52,16 @@ public class SurveyController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/surveys/{id}")
     public void deleteSurvey(@PathVariable("id") Integer id) {
         surveyService.deleteSurvey(id);
+    }
+
+    /**
+     * Add SurveyResponse to the responses list
+     *
+     * @param surveyId       : id of the Survey that will contain new SurveyResponse
+     * @param surveyResponse : object to be added to the list
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/surveys/response")
+    public void addSurveyResponse(@RequestParam("surveyId") Integer surveyId, @RequestBody SurveyResponse surveyResponse) {
+        surveyService.addSurveyResponse(surveyId, surveyResponse);
     }
 }

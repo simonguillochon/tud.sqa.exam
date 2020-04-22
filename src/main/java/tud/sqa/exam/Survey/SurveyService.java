@@ -3,6 +3,7 @@ package tud.sqa.exam.Survey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import tud.sqa.exam.SurveyResponse.SurveyResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,4 +61,18 @@ public class SurveyService {
         surveyList.removeIf(survey -> survey.getId().equals(id));
     }
 
+    /**
+     * Add SurveyResponse to the list of responses
+     *
+     * @param surveyResponse : object to be added to the responses list
+     */
+    public void addSurveyResponse(Integer surveyId, SurveyResponse surveyResponse) {
+        List<SurveyResponse> surveyResponses = surveyList.stream().filter(survey1 -> survey1.getId().equals(surveyId)).findFirst().get().getResponses();
+
+        if (surveyResponses != null && surveyResponses.size() < 10) {
+            surveyResponses.add(surveyResponse);
+        } else {
+            logger.error("[ERROR] Response value is out of range");
+        }
+    }
 }
