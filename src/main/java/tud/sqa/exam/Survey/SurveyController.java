@@ -64,4 +64,48 @@ public class SurveyController {
     public void addSurveyResponse(@RequestParam("surveyId") Integer surveyId, @RequestBody SurveyResponse surveyResponse) {
         surveyService.addSurveyResponse(surveyId, surveyResponse);
     }
+
+    /**
+     * Get average value for responses of a survey
+     *
+     * @param surveyName : name of the survey to get responses with
+     * @return a double containing the average of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/surveys/{name}/avg")
+    public double getSurveyAverage(@PathVariable("name") String surveyName) {
+        return surveyService.getSurveyAverage(surveyName);
+    }
+
+    /**
+     * Get minimum value for responses of a survey
+     *
+     * @param surveyName : name of the survey to get responses with
+     * @return a double containing the minimum of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/surveys/{name}/min")
+    public double getSurveyMinimum(@PathVariable("name") String surveyName) {
+        return surveyService.getSurveyMinimum(surveyName);
+    }
+
+    /**
+     * Get maximum value for responses of a survey
+     *
+     * @param surveyName : name of the survey to get responses with
+     * @return a double containing the maximum of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/surveys/{name}/max")
+    public double getSurveyMaximum(@PathVariable("name") String surveyName) {
+        return surveyService.getSurveyMaximum(surveyName);
+    }
+
+    /**
+     * Get standard deviation value for responses of a survey
+     *
+     * @param surveyName : name of the survey to get responses with
+     * @return a double containing the standard deviation of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/surveys/{name}/std")
+    public double getSurveyStandardDeviation(@PathVariable("name") String surveyName) {
+        return surveyService.getSurveyStandardDeviation(surveyName);
+    }
 }

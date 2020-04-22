@@ -105,4 +105,152 @@ public class SurveyTests {
         surveyResponses = surveyController.getSurvey("Test Survey").getResponses();
         assertEquals(surveyResponses.size(), 10, "List should not contain 11 survey responses");
     }
+
+    @Test
+    @DisplayName("[Survey] GET /surveys/avg gets average response of a Survey")
+    void testGetSurveyAverage() {
+        double surveyAverage;
+        SurveyResponse surveyResponse420, surveyResponse421, surveyResponse422, surveyResponse423;
+
+        surveyController.addSurvey(new Survey(42, "Test Survey"));
+        surveyResponse420 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse420.addResponses(1);
+        surveyResponse420.addResponses(2);
+        surveyResponse420.addResponses(3);
+        surveyResponse420.addResponses(4);
+        surveyResponse420.setResponse(3);
+        surveyController.addSurveyResponse(42, surveyResponse420);
+        surveyResponse421 = new SurveyResponse(421, "SR 42 1");
+        surveyResponse421.addResponses(1);
+        surveyResponse421.addResponses(2);
+        surveyResponse421.setResponse(1);
+        surveyController.addSurveyResponse(42, surveyResponse421);
+        surveyResponse422 = new SurveyResponse(422, "SR 42 2");
+        surveyResponse422.addResponses(1);
+        surveyResponse422.addResponses(2);
+        surveyResponse422.setResponse(2);
+        surveyController.addSurveyResponse(42, surveyResponse422);
+        surveyResponse423 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse423.addResponses(1);
+        surveyResponse423.addResponses(2);
+        surveyResponse423.addResponses(3);
+        surveyResponse423.addResponses(4);
+        surveyResponse423.addResponses(5);
+        surveyResponse423.setResponse(5);
+        surveyController.addSurveyResponse(42, surveyResponse423);
+
+        surveyAverage = surveyController.getSurveyAverage(surveyController.getSurvey("Test Survey").getName());
+        assertEquals(2.75, surveyAverage);
+    }
+
+    @Test
+    @DisplayName("[Survey] GET /surveys/min gets minimum response of Survey")
+    void testGetSurveyMinimum() {
+        double surveyMinimum;
+        SurveyResponse surveyResponse420, surveyResponse421, surveyResponse422, surveyResponse423;
+
+        surveyController.addSurvey(new Survey(42, "Test Survey"));
+        surveyResponse420 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse420.addResponses(1);
+        surveyResponse420.addResponses(2);
+        surveyResponse420.addResponses(3);
+        surveyResponse420.addResponses(4);
+        surveyResponse420.setResponse(3);
+        surveyController.addSurveyResponse(42, surveyResponse420);
+        surveyResponse421 = new SurveyResponse(421, "SR 42 1");
+        surveyResponse421.addResponses(1);
+        surveyResponse421.addResponses(2);
+        surveyResponse421.setResponse(1);
+        surveyController.addSurveyResponse(42, surveyResponse421);
+        surveyResponse422 = new SurveyResponse(422, "SR 42 2");
+        surveyResponse422.addResponses(1);
+        surveyResponse422.addResponses(2);
+        surveyResponse422.setResponse(2);
+        surveyController.addSurveyResponse(42, surveyResponse422);
+        surveyResponse423 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse423.addResponses(1);
+        surveyResponse423.addResponses(2);
+        surveyResponse423.addResponses(3);
+        surveyResponse423.addResponses(4);
+        surveyResponse423.addResponses(5);
+        surveyResponse423.setResponse(5);
+        surveyController.addSurveyResponse(42, surveyResponse423);
+
+        surveyMinimum = surveyController.getSurveyMinimum(surveyController.getSurvey("Test Survey").getName());
+        assertEquals(1, surveyMinimum);
+    }
+
+    @Test
+    @DisplayName("[Survey] GET /surveys/max gets maximum response of Survey")
+    void testGetSurveyMaximum() {
+        double surveyMaximum;
+        SurveyResponse surveyResponse420, surveyResponse421, surveyResponse422, surveyResponse423;
+
+        surveyController.addSurvey(new Survey(42, "Test Survey"));
+        surveyResponse420 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse420.addResponses(1);
+        surveyResponse420.addResponses(2);
+        surveyResponse420.addResponses(3);
+        surveyResponse420.addResponses(4);
+        surveyResponse420.setResponse(3);
+        surveyController.addSurveyResponse(42, surveyResponse420);
+        surveyResponse421 = new SurveyResponse(421, "SR 42 1");
+        surveyResponse421.addResponses(1);
+        surveyResponse421.addResponses(2);
+        surveyResponse421.setResponse(1);
+        surveyController.addSurveyResponse(42, surveyResponse421);
+        surveyResponse422 = new SurveyResponse(422, "SR 42 2");
+        surveyResponse422.addResponses(1);
+        surveyResponse422.addResponses(2);
+        surveyResponse422.setResponse(2);
+        surveyController.addSurveyResponse(42, surveyResponse422);
+        surveyResponse423 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse423.addResponses(1);
+        surveyResponse423.addResponses(2);
+        surveyResponse423.addResponses(3);
+        surveyResponse423.addResponses(4);
+        surveyResponse423.addResponses(5);
+        surveyResponse423.setResponse(5);
+        surveyController.addSurveyResponse(42, surveyResponse423);
+
+        surveyMaximum = surveyController.getSurveyMaximum(surveyController.getSurvey("Test Survey").getName());
+        assertEquals(5, surveyMaximum);
+    }
+
+    @Test
+    @DisplayName("[Survey] GET /surveys/std gets standard deviation response of Survey")
+    void testGetSurveyStandardDeviation() {
+        double surveyStandardDeviation;
+        SurveyResponse surveyResponse420, surveyResponse421, surveyResponse422, surveyResponse423;
+
+        surveyController.addSurvey(new Survey(42, "Test Survey"));
+        surveyResponse420 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse420.addResponses(1);
+        surveyResponse420.addResponses(2);
+        surveyResponse420.addResponses(3);
+        surveyResponse420.addResponses(4);
+        surveyResponse420.setResponse(3);
+        surveyController.addSurveyResponse(42, surveyResponse420);
+        surveyResponse421 = new SurveyResponse(421, "SR 42 1");
+        surveyResponse421.addResponses(1);
+        surveyResponse421.addResponses(2);
+        surveyResponse421.setResponse(1);
+        surveyController.addSurveyResponse(42, surveyResponse421);
+        surveyResponse422 = new SurveyResponse(422, "SR 42 2");
+        surveyResponse422.addResponses(1);
+        surveyResponse422.addResponses(2);
+        surveyResponse422.setResponse(2);
+        surveyController.addSurveyResponse(42, surveyResponse422);
+        surveyResponse423 = new SurveyResponse(420, "SR 42 0");
+        surveyResponse423.addResponses(1);
+        surveyResponse423.addResponses(2);
+        surveyResponse423.addResponses(3);
+        surveyResponse423.addResponses(4);
+        surveyResponse423.addResponses(5);
+        surveyResponse423.setResponse(5);
+        surveyController.addSurveyResponse(42, surveyResponse423);
+
+        surveyStandardDeviation = surveyController.getSurveyStandardDeviation(surveyController.getSurvey("Test Survey").getName());
+        assertEquals(1.479019945774904, surveyStandardDeviation);
+    }
 }

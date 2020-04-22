@@ -57,4 +57,73 @@ public class SurveyResponseTests {
 
         Assert.noNullElements(responses, "List of responses must not contain null element");
     }
+
+    @Test
+    @DisplayName("[SurveyResponse] GET /responses/avg gets average response of a SurveyResponse")
+    void testGetResponseAverage() {
+        double responseAverage;
+
+        surveyResponseController.addResponse(1);
+        surveyResponseController.addResponse(2);
+        surveyResponseController.addResponse(3);
+        responseAverage = surveyResponseController.getResponseAverage();
+        assertEquals(responseAverage, 2);
+
+        surveyResponseController.addResponse(4);
+        surveyResponseController.addResponse(5);
+        responseAverage = surveyResponseController.getResponseAverage();
+        assertEquals(responseAverage, 3);
+    }
+
+    @Test
+    @DisplayName("[SurveyResponse] GET /responses/min gets minimum response of SurveyResponse")
+    void testGetResponseResponseMinimum() {
+        double responseMinimum;
+
+        surveyResponseController.addResponse(4);
+        surveyResponseController.addResponse(5);
+        responseMinimum = surveyResponseController.getResponseMinimum();
+        assertEquals(responseMinimum, 4);
+
+        surveyResponseController.addResponse(1);
+        surveyResponseController.addResponse(2);
+        surveyResponseController.addResponse(3);
+        responseMinimum = surveyResponseController.getResponseMinimum();
+        assertEquals(responseMinimum, 1);
+    }
+
+    @Test
+    @DisplayName("[SurveyResponse] GET /responses/max gets maximum response of SurveyResponse")
+    void testGetResponseMaximum() {
+        double responseMaximum;
+
+        surveyResponseController.addResponse(1);
+        surveyResponseController.addResponse(2);
+        surveyResponseController.addResponse(3);
+        responseMaximum = surveyResponseController.getResponseMaximum();
+        assertEquals(responseMaximum, 3);
+
+        surveyResponseController.addResponse(4);
+        surveyResponseController.addResponse(5);
+        responseMaximum = surveyResponseController.getResponseMaximum();
+        assertEquals(responseMaximum, 5);
+    }
+
+    @Test
+    @DisplayName("[SurveyResponse] GET /responses/std gets standard deviation response of SurveyResponse")
+    void testGetResponseStandardDeviation() {
+        double responseStandardDeviation;
+
+        surveyResponseController.addResponse(1);
+        surveyResponseController.addResponse(2);
+        surveyResponseController.addResponse(3);
+        responseStandardDeviation = surveyResponseController.getResponseStandardDeviation();
+        System.out.println(responseStandardDeviation);
+        assertEquals(0.816496580927726, responseStandardDeviation);
+
+        surveyResponseController.addResponse(4);
+        responseStandardDeviation = surveyResponseController.getResponseStandardDeviation();
+        System.out.println(responseStandardDeviation);
+        assertEquals(1.118033988749895, responseStandardDeviation);
+    }
 }

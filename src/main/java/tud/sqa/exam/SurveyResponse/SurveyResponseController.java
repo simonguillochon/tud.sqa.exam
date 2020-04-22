@@ -41,4 +41,44 @@ public class SurveyResponseController {
     public List<Integer> getResponses() {
         return surveyResponseService.getResponses();
     }
+
+    /**
+     * Returns the average of the responses
+     *
+     * @return a double containing the average of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/responses/avg")
+    public double getResponseAverage() {
+        return surveyResponseService.getResponseAverage();
+    }
+
+    /**
+     * Returns the minimum of the responses
+     *
+     * @return a double containing the minimum of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/responses/min")
+    public double getResponseMinimum() {
+        return surveyResponseService.getResponseMinimum();
+    }
+
+    /**
+     * Returns the maximum of the responses
+     *
+     * @return a double containing the maximum of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/responses/max")
+    public double getResponseMaximum() {
+        return surveyResponseService.getResponseMaximum();
+    }
+
+    /**
+     * Returns the standard deviation of the responses
+     *
+     * @return a double containing the standard deviation of the responses
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/responses/std")
+    public double getResponseStandardDeviation() {
+        return surveyResponseService.getResponseStandardDeviation();
+    }
 }
